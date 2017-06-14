@@ -72,6 +72,7 @@ $( document ).ready(function () {
 
   function loadTweets()
   {
+
     $.ajax({
       url:'/tweets',
       method: 'GET',
