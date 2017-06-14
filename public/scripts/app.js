@@ -1,13 +1,21 @@
 // Test / driver code (temporary). Eventually will get this from the server.
 $( document ).ready(function () {
 
+  function escape(str) {
+    var div = document.createElement('p');
+    div.appendChild(document.createTextNode(str));
+    //console.log(div.innerHTML);
+  return div.innerHTML;
+  }
+
+
 
   function createTweetElement(tweet)
   {
     let name = tweet.user.name;
     let avatar = tweet.user.avatars.small;
     let handle = tweet.user.handle;
-    let content = tweet.content.text;
+    let content = escape(tweet.content.text);
     let time = new Date(1000*tweet.created_at);
 
 
@@ -33,6 +41,9 @@ $( document ).ready(function () {
     return text;
 
   }
+
+
+
   function renderTweets(tweets)
   {
     for (let i in tweets)
@@ -40,6 +51,41 @@ $( document ).ready(function () {
       $('#all-tweets').append(createTweetElement(tweets[i]));
     }
   }
+
+  $("#submitTweet").on("submit", function(event) {
+    event.preventDefault();
+    let name = "Vasiliy";
+    let avatar = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png";
+    let handle = "@hard_Coded_HANDLE";
+    let content = $(this).serialize();
+    console.log(content);
+    $.ajax({
+      url:'/tweets',
+      method:'POST',
+      success: function (serialzedString) {
+        console.log("YES I RAN THIS");
+      },
+      data: content
+    });
+
+    // let temp_tweet = `{
+    //   "user": {
+    //     "name":"${name}",
+    //     "avatars": {
+    //       "small":"${avatar}",
+    //       "regular":"${avatar}",
+    //       "large":"${avatar}"
+    //     },
+    //     "handle":"${handle}"
+    //   },
+    //   "content": {
+    //     "text": "${content}"
+    //   },
+    //   "created_at": "NOT SET YET"
+    // }`;
+
+
+  });
 
 
   var data = [
@@ -68,7 +114,7 @@ $( document ).ready(function () {
         },
         "handle": "@rd" },
       "content": {
-        "text": "Je pense , donc je suis"
+        "text": "<script>alert(\"hello\")</script>"
       },
       "created_at": 1461113959088
     },
