@@ -34,10 +34,10 @@ $( document ).ready(function () {
               </article>`;
 
 
-    // console.log(content);
-    // console.log(name);
-    // console.log(avatar);
-    // console.log(handle);
+     // console.log(content);
+     // console.log(name);
+     // console.log(avatar);
+     // console.log(handle);
     return text;
 
   }
@@ -58,17 +58,53 @@ $( document ).ready(function () {
     let avatar = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png";
     let handle = "@hard_Coded_HANDLE";
     let content = $(this).serialize();
-    console.log(content);
-    $.ajax({
-      url:'/tweets',
-      method:'POST',
-      success: function (serialzedString) {
-        console.log("YES I RAN THIS");
-      },
-      data: content
-    });
+
+    if (content.length === 5)
+      console.log($("#error").text("Tweet cannot be empty!"));
+    else if (content.length >= 145)
+      console.log($("#error").text("Tweet exceeds max characters!"));
+    else
+    {
+      $.ajax({
+        url:'/tweets',
+        method:'POST',
+        success: function (serialzedString) {
+          //console.log(serialzedString);
+          $('#all-tweets').prepend(createTweetElement(serialzedString));
+        },
+        data: content
+      });
+    }
 
   });
+
+  $("#toggle-tweet-post").on("click", function() {
+
+
+    if (!$("#toggle-tweet-post").val())
+    {
+      $("#toggle-tweet-post").val(1);
+      $(".new-tweet").slideUp();
+    }
+    else
+    {
+      $("#toggle-tweet-post").val("");
+      $(".new-tweet").slideDown();
+      $("#submitTweet textarea").focus();
+    }
+  });
+
+
+  function getLastTweet()
+  {
+    $.ajax({
+      url:'tweets',
+      method: 'GET',
+      success: function(res) {
+      }
+    });
+  }
+
 
   function loadTweets()
   {
@@ -77,7 +113,7 @@ $( document ).ready(function () {
       url:'/tweets',
       method: 'GET',
       success: function(res) {
-        renderTweets(res);
+        renderTweets(res.reverse());
       }
     });
   }

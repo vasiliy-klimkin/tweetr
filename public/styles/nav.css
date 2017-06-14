@@ -16,15 +16,38 @@ padding-right: 2em;
 }
 
 #nav-bar .logo {
+  position:absolute;
   width:80px;
   height:80px;
   float:left;
 }
 
 #nav-bar .header {
-  float:left;
+  position:absolute;
   margin-left:15px;
   font-size:35px;
   line-height: 80px;
+  left:100px;
   text-align: center;
+}
+
+#nav-bar #toggle-tweet-post {
+  position:absolute;
+  margin-top:15px;
+  line-height: 50px;
+  right:50px;
+  background-color: #e8fdff;
+  border:solid black 1px;
+  border-radius: 5px;
+  color:#00a087;
+}
+#nav-bar #toggle-tweet-post:hover {
+  position:absolute;
+  margin-top:15px;
+  line-height: 50px;
+  right:50px;
+  background-color: #e8fdff;
+  border:solid black 1px;
+  border-radius: 5px;
+  color:black;
 }

@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
 
   $('.new-tweet textarea').on("keyup keypress", function(event) {
-
+    $("#error").text("");
     let span = $(this).next().next();
     span.text(140-$(this).val().length);
     //$(this).parent("form").children(".counter").css({'color': 'red'});

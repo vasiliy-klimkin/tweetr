@@ -22,3 +22,8 @@
   border-bottom: 1px solid black;
   margin: 0 0 15px;
  }
+
+ .new-tweet #error {
+  color:red;
+  float:right;
+ }
