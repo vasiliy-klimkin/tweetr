@@ -1,8 +1,16 @@
 .single-tweet {
-  border: 1px solid #ccc;
+  border: 1px solid #eef;
+  margin:2em;
+  border-radius: 5px;
+  opacity: 0.7;
+}
+
+.single-tweet:hover {
+  opacity: 1;
   margin:2em;
   border-radius: 5px;
 }
+
 
 .single-tweet .tweet-header
 {
@@ -25,12 +33,11 @@
   padding-right: 5px;
 }
 
-.single-tweet h1
+.single-tweet h2
 {
   position: absolute;
-  vertical-align: middle;
   left: 65px;
-  top: 0px;
+  top:  0px;
 
 }
 
