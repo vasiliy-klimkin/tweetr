@@ -58,6 +58,7 @@ $( document ).ready(function () {
     let avatar = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png";
     let handle = "@hard_Coded_HANDLE";
     let content = $(this).serialize();
+    console.log(content);
 
     if (content.length === 5)
       console.log($("#error").text("Tweet cannot be empty!"));
@@ -69,7 +70,7 @@ $( document ).ready(function () {
         url:'/tweets',
         method:'POST',
         success: function (serialzedString) {
-          //console.log(serialzedString);
+          console.log(serialzedString);
           $('#all-tweets').prepend(createTweetElement(serialzedString));
         },
         data: content
