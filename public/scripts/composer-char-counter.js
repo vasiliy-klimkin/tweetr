@@ -1,5 +1,7 @@
 "use strict";
 
+//The chracter counter function to display how many characters can be entered before
+// the max. Also shows how much character overflow has happened in red.
 $( document ).ready(function() {
 
 
@@ -7,9 +9,6 @@ $( document ).ready(function() {
     $("#error").text("");
     let span = $(this).next().next();
     span.text(140-$(this).val().length);
-    //$(this).parent("form").children(".counter").css({'color': 'red'});
-
-    console.log(Number(span.val()));
 
     if ($(this).val().length > 140)
     {

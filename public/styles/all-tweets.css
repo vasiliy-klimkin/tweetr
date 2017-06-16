@@ -3,6 +3,7 @@
   margin:2em;
   border-radius: 5px;
   opacity: 0.7;
+  word-wrap: break-word;
 }
 
 .single-tweet:hover {
@@ -52,4 +53,53 @@
   padding-bottom: 20px;
   padding-left:10px;
   padding-right:10px;
+}
+
+.single-tweet .tweet-footer .fa-flag
+{
+  float: right;
+  padding:4px;
+  opacity: 0;
+}
+
+.single-tweet .tweet-footer .fa-retweet
+{
+  float: right;
+  padding:4px;
+  opacity: 0;
+}
+.single-tweet .tweet-footer .fa-heart
+{
+  float: right;
+  padding:4px;
+  opacity: 0;
+}
+
+.single-tweet:hover .tweet-footer .fa-flag
+{
+  opacity: 1;
+}
+
+.single-tweet:hover .tweet-footer .fa-retweet
+{
+  opacity: 1;
+}
+.single-tweet:hover .tweet-footer .fa-heart
+{
+  opacity: 1;
+}
+
+.single-tweet:hover .tweet-footer .fa-flag:hover
+{
+  color:orange;
+}
+
+.single-tweet:hover .tweet-footer .fa-retweet:hover
+{
+  color:blue;
+}
+
+.single-tweet:hover .tweet-footer .fa-heart:hover
+{
+  color:red;
 }
